@@ -1,0 +1,25 @@
+{
+  "name": "nodetest1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.9.5",
+    "body-parser": "~1.8.4",
+    "cookie-parser": "~1.3.3",
+    "morgan": "~1.3.2",
+    "serve-favicon": "~2.1.5",
+    "debug": "~0.7.4",
+    "jade": "~1.6.0",
+	"ejs": "~1.0.0",
+	"cheerio": "~0.17.0",
+	"mongoose": "~3.8.x",
+	"date-utils": "~1.2.16",
+	"crypto": "~0.0.3",
+	"fs-extra": "~0.13.0",
+	"node-cache": "~1.0.3",
+	"underscore": "~1.7.0"
+  }
+}

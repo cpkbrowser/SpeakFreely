@@ -1,0 +1,16 @@
+.vhAlign-Center{
+    width:600px;
+    height:225px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-250px 0 0 -300px;
+	background-color: #E6E6E6;
+	border-radius: 24px;
+    -webkit-border-radius: 24px;
+	padding-top: 25px;
+}
+
+h1.login {
+	text-align: center;
+}
