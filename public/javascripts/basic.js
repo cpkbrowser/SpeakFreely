@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 function login() {
 	var postData = {
-		username: $("#in_usr").val(),
+		email: $("#in_usr").val(),
 		password: $("#in_pass").val()
 	}	 
 	
@@ -24,11 +24,40 @@ function login() {
 		contentType: 'application/x-www-form-urlencoded',
 		dataType: 'json',
         success: function (rslt) {
-            var x = 1;
+            sessionStorage.token = rslt.rslt.token;
+			sessionStorage.nonce = rslt.rslt.nonce;
         },
         error: function (rslt) {
             alert('Error connecting to server, please contact support.');
         }
-    });
+    });	
+}
+
+function test() {
+	if (sessionStorage.token != null && sessionStorage.nonce != null) {
+		var postData = {
+			phrase: 'Burning Tide Rebel Soul'
+		}	 
+		
+		$.ajax({
+			url: "http://localhost:3000/test",
+			type: "POST",
+			headers: {
+				//token: sessionStorage.token,
+				token: '1234',
+				//nonce: sessionStorage.nonce
+				nonce: 2
+			},
+			data: postData,
+			contentType: 'application/x-www-form-urlencoded',
+			dataType: 'json',
+			success: function (rslt) {
+				var x = 1;
+			},
+			error: function (rslt) {
+				alert('Error connecting to server, please contact support.');
+			}
+		});
+	}		
 }
 
