@@ -43,10 +43,8 @@ function test() {
 			url: "http://localhost:3000/test",
 			type: "POST",
 			headers: {
-				//token: sessionStorage.token,
-				token: '1234',
-				//nonce: sessionStorage.nonce
-				nonce: 2
+				token: sessionStorage.token,
+				nonce: sessionStorage.nonce
 			},
 			data: postData,
 			contentType: 'application/x-www-form-urlencoded',
