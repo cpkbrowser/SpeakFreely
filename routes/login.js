@@ -19,10 +19,10 @@ router.post('/', function(req, res){
 		testUser.findOne({'email': String(req.body.email).trim()}, function(err, rslt1) {
 			if (err) {
 				mongoose.disconnect();
-				res.json({'success': 'error', 'rslt': 'Error Connecting to Database'});
+				res.json({'status': 'error', 'rslt': 'Error Connecting to Database'});
 			} else if (rslt1 == null) {
 				mongoose.disconnect();
-				res.json({'success': 'false', 'rslt': 'Could Not Find User'});
+				res.json({'status': 'error', 'rslt': 'Could Not Find User'});
 			} else {
 				mongoose.disconnect();
 				var pass = rslt1.pwd;
@@ -40,15 +40,15 @@ router.post('/', function(req, res){
 								'nonce': response.nonce,
 								'expires': response.expirationDateTime
 							};
-							res.json({'success': 'true', 'rslt': valid});
+							res.json({'status': 'success', 'rslt': valid});
 						},
 						function(error) {
 							console.log('error message: %s', error.message);
-							res.json({'success': 'false', 'rslt': ''});
+							res.json({'status': 'error', 'rslt': 'Error generating session.'});
 						}
 					);	
 				} else {
-					res.json({'success': 'false', 'rslt': 'Could Not Validate User'});
+					res.json({'status': 'error', 'rslt': 'Could Not Validate User'});
 				}				
 			}
 		});

@@ -34,28 +34,33 @@ function login() {
 }
 
 function test() {
-	if (sessionStorage.token != null && sessionStorage.nonce != null) {
-		var postData = {
-			phrase: 'Burning Tide Rebel Soul'
-		}	 
-		
-		$.ajax({
-			url: "http://localhost:3000/test",
-			type: "POST",
-			headers: {
-				token: sessionStorage.token,
-				nonce: sessionStorage.nonce
-			},
-			data: postData,
-			contentType: 'application/x-www-form-urlencoded',
-			dataType: 'json',
-			success: function (rslt) {
-				var x = 1;
-			},
-			error: function (rslt) {
-				alert('Error connecting to server, please contact support.');
-			}
-		});
-	}		
+	var postData = {
+		id: 'joO6QBKpCoH1Qj/LPsonIg==',
+		code: '2345'
+	}
+	
+	//Login By Code Test Parameters
+	//var postData = {
+	//	id: 'joO6QBKpCoH1Qj/LPsonIg==',
+	//	code: '2345'
+	//}	 
+	
+	$.ajax({
+		url: "http://localhost:3000/test",
+		type: "POST",
+		//headers: {
+		//	token: sessionStorage.token,
+		//	nonce: sessionStorage.nonce
+		//},
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json',
+		success: function (rslt) {
+			var x = 1;
+		},
+		error: function (rslt) {
+			alert('Error connecting to server, please contact support.');
+		}
+	});		
 }
 

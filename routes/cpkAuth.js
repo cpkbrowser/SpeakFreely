@@ -28,3 +28,21 @@ module.exports.cpkDecrypt = function(pass, dbpass, salt) {
 	}
 	
 };
+
+module.exports.encryptPostID = function(post_id) {
+	var cipher = crypto.createCipher('aes-256-cbc', 'postid_salt');
+	
+	var encryptPass = cipher.update(post_id, 'utf8', 'base64');
+	encryptPass += cipher.final('base64');
+	
+	return encryptPass;
+}
+
+module.exports.decryptPostID = function(cypherText, salt) {
+	
+	var decipher = crypto.createDecipher('aes-256-cbc', salt);
+	var decryptPass = decipher.update(cypherText, 'base64', 'utf8');
+	decryptPass += decipher.final('utf8');
+	return decryptPass;
+	
+}

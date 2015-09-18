@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var login = require('./routes/login');
+var youtube = require('./routes/youtube');
+var loginByCode = require('./routes/loginByCode');
 var test = require('./routes/test');
 
 var app = express();
@@ -29,9 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //start databse schemas
 require('./data/User')();
 require('./data/Topic')();
+require('./data/Scoreboard')();
 
 app.use('/', routes);
 app.use('/login', login);
+app.use('/youtube', youtube);
+app.use('/loginByCode', loginByCode);
 app.use('/test', test);
 
 // catch 404 and forward to error handler
