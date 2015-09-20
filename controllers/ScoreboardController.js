@@ -5,8 +5,8 @@ var TopicController = require('../Controllers/TopicController');
 
 module.exports.generateScoreboard = function(topic, callback) {
 	TopicController.getViewCounts(topic, function(data) {
-		if (data.scores.length > 0) {
-			var sbModel = mongoose.model('scoreboard');
+		if (data.status == 'success') {
+			var sbModel = connection.model('scoreboard');
 			var scoreboard = new sbModel({
 				post_id: topic.post_id,
 				category: topic.category,
@@ -26,29 +26,14 @@ module.exports.generateScoreboard = function(topic, callback) {
 };
 
 function saveScoreboard(scoreboard, callback) {
-	
-	var db = mongoose.connection;
-	
-	db.on('error', function() {
-		console.error.bind(console, 'connection error:');
-		callback({'status': 'Database Error', 'data': 'On Connection'});
+	var sbModel = connection.model('scoreboard');	
+	scoreboard.save(function(err, rslt) {
+		if (err) {
+			callback({'status': 'Database Error', 'data': err});
+		} else if (rslt == null) {
+			callback({'status': 'not found', 'data': null});
+		} else {
+			callback({'status': 'success', data: rslt});
+		}
 	});
-	db.once('open', function() {
-		var sbModel = mongoose.model('scoreboard');	
-		scoreboard.save(function(err, rslt) {
-			if (err) {
-				mongoose.disconnect();
-				callback({'status': 'Database Error', 'data': err});
-			} else if (rslt == null) {
-				mongoose.disconnect();
-				callback({'status': 'not found', 'data': null});
-			} else {
-				mongoose.disconnect();
-				callback({'status': 'success', data: rslt});
-			}
-		});
-		
-	});	
-	
-	mongoose.connect('mongodb://apiadmin:cloudspire3@ds053469.mongolab.com:53469/speakfreely');
 };

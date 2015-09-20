@@ -73,12 +73,11 @@ function getTemplate_Standard() {
 		Congratulations, you won!
 		</h1>
 		<p style="line-height:2; color:white; font-size:14px;">
-		Your video received the most views in the topic category: 'xyzCATEGORYzyx'. Please go to the URL below and follow
-		the instructions on the page to post next week's discussion video.
+		Your video received the most views in the topic category: '{{CATEGORY}}'. Please click the link below to automatically login and post your video. If the link below does not work for you, please go to http://www.speakfreely.com/admin-login.html and enter in your email and the below verification to login.
 		<p style="line-height:2; color:white; font-size:14px;">
-		<span>Login URL: </span><span>xyzURLzyx</span>
+		<span>Automatic Login URL: </span><span>{{URL}}</span>
 		<br />
-		<span>Verification Code: </span><span>xyzVCODEzyx</span>
+		<span>Verification Code: </span><span>{{VCODE}}</span>
 		</p>
 		<p style="line-height:2; color:white; font-size:14px;">
 		If you have any questions, concerns, or just want to talk about our product, please send an email to Support@speakfreely.com. 
@@ -97,7 +96,7 @@ function getTemplate_Standard() {
 }
 
 function formatMessage_PostAdmin(template, data) {
-	var msg = template.replace('xyzCATEGORYzyx', data.category);
-	msg = msg.replace('xyzURLzyx', 'http://speakfreely.com/loginByCode#' + data.post_id);
-	return msg.replace('xyzVCODEzyx', data.verification_code);
+	var msg = template.replace('{{CATEGORY}}', data.category);
+	msg = msg.replace('{{URL}}', 'http://speakfreely.com/admin-login.html?email=' + data.email + '&vc=' + data.verification_code);
+	return msg.replace('{{VCODE}}', data.verification_code);
 }

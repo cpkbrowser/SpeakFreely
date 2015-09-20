@@ -9,7 +9,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var login = require('./routes/login');
 var youtube = require('./routes/youtube');
-var loginByCode = require('./routes/loginByCode');
+var postLogin = require('./routes/postLogin');
+var getVideos = require('./routes/getVideos');
 var test = require('./routes/test');
 
 var app = express();
@@ -32,11 +33,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./data/User')();
 require('./data/Topic')();
 require('./data/Scoreboard')();
+require('./data/Lottery_Request')();
 
 app.use('/', routes);
 app.use('/login', login);
 app.use('/youtube', youtube);
-app.use('/loginByCode', loginByCode);
+app.use('/postLogin', postLogin);
+app.use('/getVideos', getVideos);
 app.use('/test', test);
 
 // catch 404 and forward to error handler
@@ -69,6 +72,9 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+var mongoose = require('mongoose');
+global.connection = mongoose.createConnection('mongodb://apiadmin:cloudspire3@ds053469.mongolab.com:53469/speakfreely');
 
 
 module.exports = app;

@@ -1,7 +1,7 @@
 var express = require('express');
 var __ = require('underscore');
 
-module.exports.mergeSort = function(array, callback) {
+module.exports.mergeSort = function(array, obj, callback) {
 	
 	function Sort(arr) {
 		if (arr.length < 2)
@@ -18,7 +18,7 @@ module.exports.mergeSort = function(array, callback) {
 		var result = [];
 	
 		while (left.length && right.length) {
-			if (parseInt(left[0].count) >= parseInt(right[0].count)) {
+			if (parseInt(left[0][obj]) >= parseInt(right[0][obj])) {
 				result.push(left.shift());
 			} else {
 				result.push(right.shift());

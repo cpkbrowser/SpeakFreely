@@ -9,6 +9,13 @@ $(document).ready(function() {
 			$.modal.close()
 		} 
 	});
+	
+	$.getJSON("http://www.telize.com/geoip?callback=?",
+		function(json) {
+    		sessionStorage.country_code = json.country_code;
+			sessionStorage.region_code = json.region_code;
+		}
+	);
 });
 
 function login() {
@@ -35,18 +42,12 @@ function login() {
 
 function test() {
 	var postData = {
-		id: 'joO6QBKpCoH1Qj/LPsonIg==',
-		code: '2345'
+		email: 'bot@cpkbrowser.com',
+		verification_code: '1234'
 	}
-	
-	//Login By Code Test Parameters
-	//var postData = {
-	//	id: 'joO6QBKpCoH1Qj/LPsonIg==',
-	//	code: '2345'
-	//}	 
-	
+		
 	$.ajax({
-		url: "http://localhost:3000/test",
+		url: "http://localhost:3000/postLogin/postadmin",
 		type: "POST",
 		//headers: {
 		//	token: sessionStorage.token,
