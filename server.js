@@ -74,7 +74,7 @@ app.use(function(err, req, res, next) {
 });
 
 var mongoose = require('mongoose');
-//global.connection = mongoose.createConnection('mongodb://apiadmin:cloudspire3@ds053469.mongolab.com:53469/speakfreely');
+global.connection = mongoose.createConnection('mongodb://apiadmin:cloudspire3@ds053469.mongolab.com:53469/speakfreely');
 
 
 module.exports = app;
