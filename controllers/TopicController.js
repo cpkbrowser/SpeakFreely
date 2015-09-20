@@ -5,7 +5,7 @@ var __ = require('underscore');
 var moment = require('moment');
 var YoutubeController = require('../Controllers/YouTubeController');
 var utilities = require('../Controllers/UtilitiesController');
-var lottery = require('../Controllers/LotteryController');
+var lottery = require('../Controllers/LotteryController'); 
 
 module.exports.getTopic = function(category, callback) {
 	
