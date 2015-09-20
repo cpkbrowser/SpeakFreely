@@ -1,6 +1,6 @@
 var __ = require('underscore');
 var mongoose = require('mongoose');
-var util = require('../Controllers/UtilitiesController');
+var util = require('../controllers/UtilitiesController');
 
 module.exports.getLotteryRequests = function(callback) {
 	var Requests = connection.model('lottery_request');	

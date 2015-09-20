@@ -1,9 +1,9 @@
 var cpkAuth = require('../routes/cpkAuth');
 var __ = require('underscore');
-var TopicController = require('../Controllers/TopicController');
-var sbController = require('../Controllers/ScoreboardController');
-var util = require('../Controllers/UtilitiesController');
-var email = require('../Controllers/EmailController');
+var TopicController = require('../controllers/TopicController');
+var sbController = require('../controllers/ScoreboardController');
+var util = require('../controllers/UtilitiesController');
+var email = require('../controllers/EmailController');
 
 module.exports.closeAllTopics = function(callback) {
 	TopicController.getAllTopics(function(rslt) {

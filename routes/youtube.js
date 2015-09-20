@@ -3,7 +3,7 @@ var router = express.Router();
 var qs = require('querystring');
 var http = require("http");
 var auth = require('node-session-tokens')();
-var YoutubeControler = require('../Controllers/YouTubeController');
+var YoutubeControler = require('../controllers/YouTubeController');
 
 router.get('/id', function(req, res){
 	auth.validateSession(req.headers.token, req.headers.nonce,

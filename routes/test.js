@@ -5,10 +5,10 @@ var http = require("http");
 var auth = require('node-session-tokens')();
 var __ = require('underscore');
 var mongoose = require('mongoose');
-var TopicSessionController = require('../Controllers/TopicSessionController');
-var TopicController = require('../Controllers/TopicController');
-var LotteryController = require('../Controllers/LotteryController');
-var youtube = require('../Controllers/YouTubeController');
+var TopicSessionController = require('../controllers/TopicSessionController');
+var TopicController = require('../controllers/TopicController');
+var LotteryController = require('../controllers/LotteryController');
+var youtube = require('../controllers/YouTubeController');
 
 router.post('/', function(req, res){
 	//TopicSessionController.closeAllTopics(function(rslt) {

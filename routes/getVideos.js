@@ -5,7 +5,7 @@ var http = require("http");
 var auth = require('node-session-tokens')();
 var __ = require('underscore');
 var mongoose = require('mongoose');
-var TopicController = require('../Controllers/TopicController');
+var TopicController = require('../controllers/TopicController');
 
 router.post('/', function(req, res){
 	TopicController.getTopic(req.body.category, function(rslt) {

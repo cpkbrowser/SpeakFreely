@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var __ = require('underscore');
-var TopicController = require('../Controllers/TopicController');
+var TopicController = require('../controllers/TopicController');
 
 module.exports.generateScoreboard = function(topic, callback) {
 	TopicController.getViewCounts(topic, function(data) {

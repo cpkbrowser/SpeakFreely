@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 var cpkAuth = require('../routes/cpkAuth');
 var __ = require('underscore');
 var moment = require('moment');
-var YoutubeController = require('../Controllers/YouTubeController');
-var utilities = require('../Controllers/UtilitiesController');
-var lottery = require('../Controllers/LotteryController'); 
+var YoutubeController = require('../controllers/YouTubeController');
+var utilities = require('../controllers/UtilitiesController');
+var lottery = require('../controllers/LotteryController'); 
 
 module.exports.getTopic = function(category, callback) {
 	

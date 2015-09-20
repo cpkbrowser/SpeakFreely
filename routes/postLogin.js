@@ -3,7 +3,7 @@ var router = express.Router();
 var qs = require('querystring');
 var http = require("http");
 var auth = require('node-session-tokens')();
-var TopicController = require('../Controllers/TopicController');
+var TopicController = require('../controllers/TopicController');
 
 router.post('/postadmin', function(req, res) {
 	var Topic = connection.model('topic');
