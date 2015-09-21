@@ -47,15 +47,15 @@ function test() {
 	}
 		
 	$.ajax({
-		url: "http://localhost:3000/postLogin/postadmin",
-		type: "POST",
-		//headers: {
-		//	token: sessionStorage.token,
-		//	nonce: sessionStorage.nonce
-		//},
-		data: postData,
-		contentType: 'application/x-www-form-urlencoded',
-		dataType: 'json',
+		url: "http://localhost:3000/youtube/keywords?keywords=Burning Tide Rebel Soul",
+		type: "GET",
+		headers: {
+			token: sessionStorage.token,
+			nonce: sessionStorage.nonce
+		},
+		//data: postData,
+		//contentType: 'application/x-www-form-urlencoded',
+		//dataType: 'json',
 		success: function (rslt) {
 			var x = 1;
 		},

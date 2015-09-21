@@ -15,7 +15,7 @@ module.exports.getVideoByID = function(id, callback) {
 
 module.exports.getVideosByKeywords = function(phrase, callback) {
 	var keywords = phrase.replace('/ /g', '+');
-	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + keywords + '&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU';
+	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + keywords + '&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU';
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var rslt = JSON.parse(body);
