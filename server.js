@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var youtube = require('./routes/youtube');
 var postLogin = require('./routes/postLogin');
 var getVideos = require('./routes/getVideos');
+var updateTopic = require('./routes/updateTopic');
 var test = require('./routes/test');
 
 var app = express();
@@ -40,6 +41,7 @@ app.use('/login', login);
 app.use('/youtube', youtube);
 app.use('/postLogin', postLogin);
 app.use('/getVideos', getVideos);
+app.use('/updateTopic', updateTopic);
 app.use('/test', test);
 
 // catch 404 and forward to error handler

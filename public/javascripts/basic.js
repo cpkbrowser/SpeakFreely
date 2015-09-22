@@ -42,20 +42,21 @@ function login() {
 
 function test() {
 	var postData = {
-		email: 'bot@cpkbrowser.com',
-		verification_code: '1234'
+		email: 'cloudspire@hotmail.com',
+		verification_code: '5678',
+		id: '948xkM1oXGw'
 	}
 		
 	$.ajax({
-		url: "http://localhost:3000/youtube/keywords?keywords=Burning Tide Rebel Soul",
-		type: "GET",
+		url: "http://localhost:3000/updateTopic/responder-video",
+		type: "POST",
 		headers: {
 			token: sessionStorage.token,
 			nonce: sessionStorage.nonce
 		},
-		//data: postData,
-		//contentType: 'application/x-www-form-urlencoded',
-		//dataType: 'json',
+		data: postData,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json',
 		success: function (rslt) {
 			var x = 1;
 		},

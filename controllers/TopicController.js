@@ -51,29 +51,56 @@ module.exports.getTopicVideos = function(topic, callback) {
 	});
 };
 
-module.exports.accessTopic = function(post_id, verification_code, callback) {
+module.exports.accessTopic_PostAdmin = function(email, verification_code, callback) {
 	
-	var Topics = connection.model('topic');	
-	var id = cpkAuth.decryptPostID(post_id, 'postid_salt');
-	
-	Topics.findOne({'post_id': id}, function(err, rslt1) {
+	var Topic = connection.model('topic');
+	Topic.find({}, function(err, rslt) {
 		if (err) {
-			callback({'status': 'Database Error', 'role': null, 'data': null});
-		} else if (rslt1 == null) {
-			callback({'status': 'not found', 'role': null, 'data': null});
+			callback({'status': 'error', 'data': err});
+		} else if (rslt == null) {
+			callback({'status': 'not found', 'data': null});
 		} else {
-			if (rslt1.post_admin.verification_code == verification_code) {
-				callback({'status': 'success', 'role': 'post_admin', 'data': rslt1});
+			var found;
+			rslt.forEach(function(item, index, array) {
+				if (item.post_admin.email == email && item.post_admin.verification_code == verification_code) {
+					found = item;
+				}
+			});
+			if (found != null) {
+				callback({'status': 'success', 'data': found});
 			} else {
-				rslt1.responders.forEach(function(item, index, array) {
-					if (item.verification_code == verification_code) {
-						callback({'status': 'success', 'role': 'responder', 'data': rslt1});
-					}
-				});
-				callback({'status': 'not found', 'role': null, 'data': null});
+				callback({'status': 'not found', 'data': null});
 			}
 		}
-	});		
+	});	
+};
+
+module.exports.accessTopic_Responder = function(email, verification_code, callback) {
+	
+	var Topic = connection.model('topic');
+	Topic.find({}, function(err, rslt) {
+		if (err) {
+			callback({'status': 'error', 'data': err});
+		} else if (rslt == null) {
+			callback({'status': 'not found', 'data': null});
+		} else {
+			var found, num;
+			rslt.forEach(function(item, index, array) {
+				item.responders.forEach(function(item2, index2, array2) {
+					if (item2.email == email && item2.verification_code == verification_code) {
+						found = item;
+						num = index2;
+						console.log('index:' + index2);
+					}
+				});
+			});
+			if (found != null) {
+				callback({'status': 'success', 'data': found, 'index': num});
+			} else {
+				callback({'status': 'not found', 'data': null});
+			}
+		}
+	});	
 };
 
 module.exports.getViewCounts = function(topic, callback) {
