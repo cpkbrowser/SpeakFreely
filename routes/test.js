@@ -15,7 +15,7 @@ router.post('/', function(req, res){
 	//	res.json(rslt);
 	//});
 	console.log(req.get('origin'));
-	res.json({'status': 'success', 'data': req.get('host')});
+	res.json({'status': 'success', 'data': req.get('host'), 'data2': req.headers.referer, 'data3': req.headers.origin});
 	
 });
 
