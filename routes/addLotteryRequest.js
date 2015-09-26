@@ -4,8 +4,9 @@ var LotteryController = require('../controllers/LotteryController');
 
 router.post('/', function(req, res){
 	
-	var origin = req.get('origin');
-	if (origin == 'joepodiumapi.herokuapp.com') {
+	var origin = req.headers.origin;
+	//if (origin == 'http://theurloftheactualwebsite.com') {
+	if (origin != '') {
 		var lottery_request = connection.model('lottery_request');
 		
 		function createLotteryID(max) {
