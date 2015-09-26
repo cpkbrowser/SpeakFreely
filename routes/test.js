@@ -14,7 +14,7 @@ router.post('/', function(req, res){
 	//TopicSessionController.closeAllTopics(function(rslt) {
 	//	res.json(rslt);
 	//});
-	console.log(req.get('host'));
+	console.log(req.get('origin'));
 	res.json({'status': 'success', 'data': req.get('host')});
 	
 });

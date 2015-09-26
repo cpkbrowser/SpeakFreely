@@ -50,7 +50,8 @@ function test() {
 	}
 	var x = 1;
 	$.ajax({
-		url: "http://localhost:3000/test",
+		url: 'http://joepodiumapi.herokuapp.com/test',
+		//url: "http://localhost:3000/test",
 		type: "POST",
 		headers: {
 			token: sessionStorage.token,
