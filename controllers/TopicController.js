@@ -146,10 +146,10 @@ module.exports.createTopic = function(category, post_id, poster, callback) {
 	var topicUser = connection.model('topic_user');
 	var start = moment().utc().startOf('day').add(1, 'milliseconds');
 	var end =  moment().utc().startOf('day').add(1, 'week');
-	lottery.getLotteryRequests(function(rslt) {
+	lottery.getLotteryRequests(category, function(rslt) {
 		if (rslt.status == 'success') {
 			var responders = [];
-			var max = 20;
+			var max = max_topic_responder; //max_topic_responder is a global, set in server.js
 			if (rslt.data.length < max) { max = rslt.data.length };
 			for (i = 0; i < max; i++) {
 				responders.push(new topicUser({
@@ -157,6 +157,7 @@ module.exports.createTopic = function(category, post_id, poster, callback) {
 					youtube_id: '',
 					verification_code: newVerificationCode()
 				}));
+				rslt.data[i].remove();
 			}
 			var newTopic = new Topics({
 				post_id: post_id,

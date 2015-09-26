@@ -12,6 +12,7 @@ var youtube = require('./routes/youtube');
 var postLogin = require('./routes/postLogin');
 var getVideos = require('./routes/getVideos');
 var updateTopic = require('./routes/updateTopic');
+var addLotteryRequest = require('./routes/addLotteryRequest');
 var test = require('./routes/test');
 
 var app = express();
@@ -42,6 +43,7 @@ app.use('/youtube', youtube);
 app.use('/postLogin', postLogin);
 app.use('/getVideos', getVideos);
 app.use('/updateTopic', updateTopic);
+app.use('/addLotteryRequest', addLotteryRequest);
 app.use('/test', test);
 
 // catch 404 and forward to error handler
@@ -77,6 +79,7 @@ app.use(function(err, req, res, next) {
 
 var mongoose = require('mongoose');
 global.connection = mongoose.createConnection('mongodb://apiadmin:cloudspire3@ds053469.mongolab.com:53469/speakfreely');
+global.max_topic_responder = 5;
 
 
 module.exports = app;

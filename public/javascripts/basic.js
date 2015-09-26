@@ -42,13 +42,15 @@ function login() {
 
 function test() {
 	var postData = {
-		email: 'cloudspire@hotmail.com',
-		verification_code: '5678',
-		id: '948xkM1oXGw'
+		email: 'suppoert@cpkbrowser.com',
+		topic: 'Politics',
+		gender: 'M',
+		country: sessionStorage.country_code,
+		region: 'KS'
 	}
-		
+	var x = 1;
 	$.ajax({
-		url: "http://localhost:3000/updateTopic/responder-video",
+		url: "http://localhost:3000/test",
 		type: "POST",
 		headers: {
 			token: sessionStorage.token,

@@ -6,6 +6,7 @@ module.exports = function() {
 	var LotterySchema = new Schema({
 		'email': String,
 		'gender': String,
+		'topic': String,
 		'country_code': String,
 		'region_code': String,
 		'lottery_id': Number
