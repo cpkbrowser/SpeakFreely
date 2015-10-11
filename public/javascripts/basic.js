@@ -42,16 +42,14 @@ function login() {
 
 function test() {
 	var postData = {
-		email: 'suppoert@cpkbrowser.com',
-		topic: 'Politics',
-		gender: 'M',
-		country: sessionStorage.country_code,
-		region: 'KS'
+		email: 'info@cpkbrowser.com',
+		verification_code: '8558',
+		id: 'zxR00790x6A'
 	}
 	var x = 1;
 	$.ajax({
-		url: 'http://joepodiumapi.herokuapp.com/test',
-		//url: "http://localhost:3000/test",
+		//url: 'http://joepodiumapi.herokuapp.com/test',
+		url: "http://localhost:3000/test",
 		type: "POST",
 		headers: {
 			token: sessionStorage.token,

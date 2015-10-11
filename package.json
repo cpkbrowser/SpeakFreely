@@ -15,7 +15,7 @@
     "jade": "~1.6.0",
 	"ejs": "~1.0.0",
 	"cheerio": "~0.17.0",
-	"mongoose": "~3.8.x",
+	"mongoose": "~4.0.x",
 	"date-utils": "~1.2.16",
 	"crypto": "~0.0.3",
 	"fs-extra": "~0.13.0",

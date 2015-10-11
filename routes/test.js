@@ -14,9 +14,17 @@ router.post('/', function(req, res){
 	//TopicSessionController.closeAllTopics(function(rslt) {
 	//	res.json(rslt);
 	//});
-	console.log(req.get('origin'));
-	res.json({'status': 'success', 'data': req.get('host'), 'data2': req.headers.referer, 'data3': req.headers.origin});
-	
+	//TopicController.accessTopic_Responder(req.body.email, req.body.verification_code, function(rslt) {
+	//	if (rslt.status != null) {
+	//		var topic = rslt.data;
+	//		topic.responders[rslt.index].youtube_id = req.body.id;
+	//		TopicController.saveTopic(topic, function(rslt2) {
+	//			res.json(rslt2);
+	//		});
+	//	} else {
+	//		res.json(rslt);
+	//	}
+	//});
 });
 
 module.exports = router;
