@@ -1,5 +1,0 @@
-Search by id
-https://www.googleapis.com/youtube/v3/videos?part=statistics%2Csnippet&id=Zid82jOC-TQ&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU
-
-Search by keyword:
-https://www.googleapis.com/youtube/v3/search?part=snippet&q=Burning+Tide&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU
