@@ -2,7 +2,7 @@ var express = require('express');
 var request = require('request');
 
 module.exports.getVideoByID = function(id, callback) {
-	var url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics%2Csnippet&id=' + id + '&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU';
+	var url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics%2Csnippet%2CcontentDetails&id=' + id + '&key=AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU';
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var rslt = JSON.parse(body);
